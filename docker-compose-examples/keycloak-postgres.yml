@@ -6,7 +6,7 @@ volumes:
 
 services:
   postgres:
-      image: postgres
+      image: armhf/postgres:9.6-alpine
       volumes:
         - postgres_data:/var/lib/postgresql/data
       environment:
@@ -14,7 +14,7 @@ services:
         POSTGRES_USER: keycloak
         POSTGRES_PASSWORD: password
   keycloak:
-      image: jboss/keycloak
+      image: keycloak:latest-arm
       environment:
         DB_VENDOR: POSTGRES
         DB_ADDR: postgres

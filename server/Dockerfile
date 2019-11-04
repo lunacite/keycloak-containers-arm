@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8-minimal
+FROM centos:centos7
 
 ENV KEYCLOAK_VERSION 7.0.1
 ENV JDBC_POSTGRES_VERSION 42.2.5
@@ -17,7 +17,7 @@ ARG KEYCLOAK_DIST=https://downloads.jboss.org/keycloak/$KEYCLOAK_VERSION/keycloa
 
 USER root
 
-RUN microdnf update -y && microdnf install -y gzip hostname java-11-openjdk-headless openssl tar which && microdnf clean all
+RUN yum update -y && yum install -y gzip hostname java-11-openjdk-headless openssl tar which && yum clean all
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
